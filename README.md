@@ -20,6 +20,6 @@ This crate is compatible with `no_std` environments, requiring only the `alloc` 
 Support for serialising/deserialising using the [`serde`](https://github.com/serde-rs/serde) framework can be enabled via the `serde` feature.
 
 ### WASM Component
-This crate defines and implements a [WIT API](https://github.com/WebAssembly/component-model), allowing it to be embedded in WASM applications.
+This crate defines and implements a [WIT API](https://github.com/WebAssembly/component-model) when the `wasm-component` feature is enabled, allowing it to be embedded in WASM applications.
 
 ---
