@@ -102,27 +102,27 @@ impl Value {
 }
 
 impl Value {
-    /// Consumes the `Value`, returning the contained string if it represented one.
-    pub fn into_string(self) -> Option<String> {
+    /// If the `Value` represented a string it is returned in the `Ok` result, else the `Value` is preserved in the `Err` result.
+    pub fn into_string(self) -> Result<String, Self> {
         match self {
-            Self::String(v) => Some(v),
-            _ => None,
+            Self::String(v) => Ok(v),
+            _ => Err(self),
         }
     }
 
-    /// Consumes the `Value`, returning the contained list if it represented one.
-    pub fn into_list(self) -> Option<Vec<Self>> {
+    /// If the `Value` represented a list it is returned in the `Ok` result, else the `Value` is preserved in the `Err` result.
+    pub fn into_list(self) -> Result<Vec<Self>, Self> {
         match self {
-            Self::List(v) => Some(v),
-            _ => None,
+            Self::List(v) => Ok(v),
+            _ => Err(self),
         }
     }
 
-    /// Consumes the `Value`, returning the contained map if it represented one.
-    pub fn into_map(self) -> Option<BTreeMap<String, Self>> {
+    /// If the `Value` represented a map it is returned in the `Ok` result, else the `Value` is preserved in the `Err` result.
+    pub fn into_map(self) -> Result<BTreeMap<String, Self>, Self> {
         match self {
-            Self::Map(v) => Some(v),
-            _ => None,
+            Self::Map(v) => Ok(v),
+            _ => Err(self),
         }
     }
 }
